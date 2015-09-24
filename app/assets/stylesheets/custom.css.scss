@@ -128,6 +128,7 @@ footer {
 /* sidebar */
 
 aside {
+
   section {
     padding: 10px 0;
     border-top: 1px solid lightgray;
@@ -208,4 +209,45 @@ input {
       border-bottom: 1px solid $grayLighter;
     }
   }
+}/* microposts */
+
+.microposts {
+  
+  list-style: none;
+  margin: 10px 0 0 0;
+
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+}
+.content {
+  width: 25em;
+  padding: 10px;
+  display: block;
+}
+.timestamp {
+  color: $grayLight;
+}
+
+aside {
+  textarea {
+    height: 100px;
+    margin-bottom: 5px;
+  }
+}
+
+.span8{
+  width: 35em;
+  float: right;
+
+  margin-right: 70px;
+}
+
+.span4{
+  float:left;
+}
+
+.posted_color{
+  color: black;
 }

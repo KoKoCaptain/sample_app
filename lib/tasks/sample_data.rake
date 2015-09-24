@@ -15,5 +15,11 @@ namespace :db do
                    password: password,
                    password_confirmation: password)
     end
+
+    users = [User.first, User.second]
+    50.times do
+      content = "Lorem ipsun dolor sit amet"
+      users.each { |user| user.microposts.create!(content: content) }
+    end
   end
 end
