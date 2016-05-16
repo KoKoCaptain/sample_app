@@ -31,7 +31,7 @@ html {
 }
 
 body {
-  padding-top: 90px;
+  background-image: image_url('background.png');
 }
 
 section {
@@ -78,6 +78,15 @@ p {
 
 
 /* header */
+
+header{
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 94px;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
 
 #logo {
   float: left;

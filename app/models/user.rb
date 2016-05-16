@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_attached_file :avatar, styles: { profile: '300x350>', thumb: '60x60>', author: '150x200>' }
+
   has_many :microposts, dependent: :destroy
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
   has_many :followed_users, through: :relationships, source: :followed
@@ -17,6 +19,10 @@ class User < ActiveRecord::Base
 
   has_secure_password
   validates :password, length: { minimum: 6 }
+
+  # Validates
+  validates_attachment_content_type :avatar, content_type: /\Aimage/
+  validates_attachment_size :avatar, less_than: 5.megabytes
 
   def feed
     Micropost.from_users_followed_by(self)
