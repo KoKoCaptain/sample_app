@@ -42,6 +42,10 @@ gem 'activeadmin', github: 'gregbell/active_admin'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+group :production, :staging do
+  gem 'rails_12factor'
+end
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
 
