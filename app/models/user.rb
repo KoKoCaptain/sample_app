@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-  has_attached_file :avatar, styles: { profile: '300x350>', thumb: '60x60>', author: '150x200>' }
+  has_attached_file :avatar, styles: { profile: '300x350>', thumb: '60x60>', author: '150x200>' },
+                    :default_url => 'no_profile_img.gif'
 
   has_many :microposts, dependent: :destroy
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
