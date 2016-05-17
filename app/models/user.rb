@@ -24,6 +24,12 @@ class User < ActiveRecord::Base
   validates_attachment_content_type :avatar, content_type: /\Aimage/
   validates_attachment_size :avatar, less_than: 5.megabytes
 
+  enum status: {
+           default: 0,
+           steward: 1,
+           lector: 2
+       }
+
   def feed
     Micropost.from_users_followed_by(self)
   end
@@ -46,6 +52,10 @@ class User < ActiveRecord::Base
 
   def User.encrypt(token)
     Digest::SHA1.hexdigest(token.to_s)
+  end
+
+  def to_param
+    [id, I18n.transliterate(name).parameterize].join('-')
   end
 
   private

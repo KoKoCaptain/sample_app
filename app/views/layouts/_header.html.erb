@@ -1,9 +1,23 @@
+<% if signed_in? %>
 <header>
-  <div class="col-sm-3">
-    <% if signed_in? %>
-      <%= image_tag current_user.avatar.url(:thumb) %>
-      <%= current_user.name %>
-    <% end %>
-  </div>
-
+    <div class="col-sm-3 nav-upper-left">
+      <ul>
+        <li><%= image_tag current_user.avatar.url(:thumb) %></li>
+        <li>
+          <%= link_to current_user.name, user_path(current_user) %>
+          <p><%= current_user.group %></p>
+        </li>
+      </ul>
+    </div>
+    <div class="nav-upper-right">
+      <ul>
+        <li><%= link_to image_tag('home.png', alt: 'home page'), root_path %></li>
+        <li><%= link_to image_tag('friends.png', alt: 'profile page'), user_path(current_user) %></li>
+        <li><%= link_to image_tag('news.png', alt: 'news page'), '/news' %></li>
+        <li><%= link_to image_tag('settings.png', alt: 'accout settings'),
+                        "/users/#{current_user.id}/edit" %></li>
+        <li><%= link_to image_tag('door.png', alt: 'exit', width: 60), signout_path, method: 'delete' %></li>
+      </ul>
+    </div>
 </header>
+<% end %>

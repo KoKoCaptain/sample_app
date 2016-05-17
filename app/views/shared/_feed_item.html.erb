@@ -1,15 +1,23 @@
-<li id="<%= feed_item.id %>">
-  <%= link_to gravatar_for(feed_item.user), feed_item.user %>
-  <span class="user">
-      <%= link_to feed_item.user.name, feed_item.user %>
-    </span>
-  <span class="content"><%= feed_item.content %></span>
+<li id="<%= feed_item.id %>" class="feed-item">
+  <div class="feed-item-user col-sm-2">
+    <%= link_to image_tag(feed_item.user.avatar.url(:author), width: 100), feed_item.user %>
+  </div>
+  <div class="feed-item-content col-sm-9">
+    <p><%= feed_item.content %></p>
+  </div>
+  <div class="col-sm-12 feed-item-actions">
+    <%= link_to feed_item.user.name, feed_item.user %>
     <span class="timestamp">
-      Posted <%= time_ago_in_words(feed_item.created_at) %> ago.
+      <%= time_ago_in_words(feed_item.created_at) %> ago.
     </span>
-  <% if current_user?(feed_item.user) %>
-      <%= link_to "delete", feed_item, method: :delete,
-                  data: { confirm: "You sure?" },
-                  title: feed_item.content %>
-  <% end %>
+    <% if current_user?(feed_item.user) %>
+        <%= link_to "delete", feed_item, method: :delete,
+                    data: { confirm: "You sure?" },
+                    title: feed_item.content %>
+    <% end %><br>
+    <p>
+      <%= I18n.t :"activerecord.attributes.user.status.#{feed_item.user.status}" %>
+      <%= feed_item.user.group %>
+    </p>
+  </div>
 </li>

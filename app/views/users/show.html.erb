@@ -1,25 +1,21 @@
 <% provide(:title, @user.name) %>
-<div class="row">
-  <aside class="span4">
-    <section>
-      <h1>
-        <%= image_tag @user.avatar(:profile) %>
-        <%= @user.name %>
-      </h1>
-    </section>
-    <section>
-      <%= render 'shared/stats' %>
-      <%= render 'follow_form' if signed_in? %>
-    </section>
-  </aside>
-  <div class="span8">
-
-    <% if @user.microposts.any? %>
-        <h3>Microposts (<%= @user.microposts.count %>)</h3>
-        <ol class="microposts">
-          <%= render @microposts %>
-        </ol>
-        <%= will_paginate @microposts %>
-    <% end %>
+<div class="profile-div">
+  <div class="profile-image-div">
+    <%= image_tag @user.avatar.url(:profile) %>
+  </div>
+  <div class="profile-info-div">
+    <ul>
+      <li><h3><%= @user.name %></h3></li>
+      <li><p><b>Место учебы:</b> <%= @user.study_place %></p></li>
+      <li><p><b>Факультет:</b> <%= @user.faculty %></p></li>
+      <li><p><b>Кафедра:</b> <%= @user.cafedra %></p></li>
+      <li><p><b>Группа:</b> <%= @user.group %></p></li>
+      <li><p><b>Должность:</b> <%= I18n.t :"activerecord.attributes.user.status.#{@user.status}" %></p></li><br>
+      <li><p><b>День рождения:</b> <%= @user.date_of_birth %></p></li>
+      <li><p><b>Город:</b> <%= @user.city %></p></li><br>
+    </ul>
+  </div>
+  <div class="follow-form">
+    <%= render 'follow_form' if signed_in? %>
   </div>
 </div>

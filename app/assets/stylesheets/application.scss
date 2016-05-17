@@ -47,7 +47,10 @@ html {
 }
 
 body {
-  background-image: image_url('background.png');
+  background: image_url('background.png') top right no-repeat;
+  background-attachment:fixed;
+  font-family: arial, sans-serif;
+  font-size: 16px;
 }
 
 section {
@@ -92,16 +95,78 @@ p {
   line-height: 1.7em;
 }
 
+ul{
+  list-style-type: none;
+}
+
+.btn, .btn:hover{
+  background-color: #660066;
+  border-color: #660066;
+}
 
 /* header */
 
 header{
-  position: absolute;
+  position: relative;
   top: 0;
   width: 100%;
   height: 94px;
   background-color: rgba(0, 0, 0, 0.6);
   z-index: 1;
+  margin-bottom: 50px;
+}
+
+.nav-upper-left{
+  float: left;
+  margin-top: 15px;
+  ul {
+    li {
+      margin: 0;
+      float: left;
+      img {
+        border: 2px solid white;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        -webkit-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+        img:hover{
+          -webkit-transform:scale(1.2);
+          transform:scale(1.2);
+        }
+      }
+      a{
+        color: white;
+        margin-left: 10px;
+        font-family: arial, sans-serif;
+      }
+      p{
+        margin-left: 10px;
+        color: #b30000;
+      }
+    }
+  }
+}
+
+.nav-upper-right{
+  float: right;
+  margin-top: 15px;
+  ul{
+    li{
+      margin-right: 10px;
+      float: left;
+      a{
+        img:hover{
+          -webkit-transform:scale(1.2);
+          transform:scale(1.2);
+        }
+        img{
+          -webkit-transition: all 0.5s ease;
+          transition: all 0.5s ease;
+        }
+      }
+    }
+  }
 }
 
 #logo {
@@ -210,6 +275,110 @@ aside {
   }
 }
 
+/* user profile */
+
+.profile-div{
+  box-shadow: 0 0 20px 10px rgba(0,0,0,0.5);
+  border-radius: 3px;
+  margin-top: 50px;
+  width: 70%;
+  margin: auto;
+  height: 350px;
+  background: #f2f2f2;
+  .profile-image-div{
+    float: left;
+    img {
+      border-top-left-radius: 3px;
+      border-bottom-left-radius: 3px;
+    }
+  }
+  .profile-info-div{
+    float: left;
+  }
+}
+
+.follow-form{
+  float: right;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
+.unfollow-button{
+  background-color: #23527c;
+}
+
+.follow-button, .unfollow-button{
+  color: white !important;
+}
+
+.user-link {
+  color: #660066;
+}
+.home-user-nav{
+  box-shadow: 0 0 20px 10px rgba(0,0,0,0.5);
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 15px;
+}
+
+/* home feed */
+.home-news-feed{
+  margin-left: 50px;
+  padding: 15px;
+  box-shadow: 0 0 20px 10px rgba(0,0,0,0.5);
+  border-radius: 5px;
+  background-color: #f2f2f2;
+}
+
+.microposts li{
+  margin-top: 20px;
+  height: 200px;
+  display: block;
+  a{
+    color: #660066
+  }
+}
+
+.feed-item{
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  box-shadow: 0 0 20px 10px rgba(0,0,0,0.5);
+}
+
+.feed-item-user{
+  float: left;
+  padding-left: 0px;
+  img{
+    border-top-left-radius: 5px;
+  }
+}
+
+.feed-item-actions{
+  padding-left: 0px;
+  p{
+    color: #b30000;
+  }
+}
+
+.feed-item-content{
+  padding-left: 0px;
+  word-wrap: break-word;
+  padding: 10px;
+  background-color: #e4d1d1;
+  margin-left: 5%;
+  margin-top: 2%;
+  border-radius: 5px;
+}
+
+.edit-profile{
+  background-color: #f2f2f2;
+  width: 70%;
+  margin: auto;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 20px 10px rgba(0,0,0,0.5);
+}
+
 /* forms */
 
 input, textarea, select, .uneditable-input {
@@ -265,43 +434,43 @@ input {
   }
 }/* microposts */
 
-.microposts {
-
-  list-style: none;
-  margin: 10px 0 0 0;
-
-  li {
-    padding: 10px 0;
-    border-top: 1px solid #e8e8e8;
-  }
-}
-.content {
-  width: 25em;
-  padding: 10px;
-  display: block;
-}
 .timestamp {
-  color: $grayLight;
+  color: darkgray;
 }
 
-aside {
-  textarea {
-    height: 100px;
-    margin-bottom: 5px;
+/* home non signed */
+
+@font-face {
+  font-family: "Badscript";
+  src: url('/assets/Badscriptregular.ttf') format("truetype");
+}
+
+.non-signed-home-div{
+  p{
+    color: white;
+    font-size: 2em;
+    font-family: "Badscript";
+  }
+  a{
+    color:white;
   }
 }
 
-.span8{
-  width: 35em;
-  float: right;
-
-  margin-right: 70px;
+.sign-in-link{
+  font-size: 9em;
+  font-family: "Badscript";
 }
 
-.span4{
-  float:left;
+.sign-out-link{
+  font-size: 6em;
+  font-family: "Badscript";
 }
 
-.posted_color{
-  color: black;
+.logo{
+  margin-top: 20px !important;
+  text-align: center;
+}
+
+.non-signed-edit{
+  margin-top: 50px;
 }
