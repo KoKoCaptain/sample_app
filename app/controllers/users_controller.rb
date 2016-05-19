@@ -1,8 +1,7 @@
 class UsersController < ApplicationController
   before_action :signed_in_user,
                 only: [:index, :edit, :update, :destroy, :following, :followers]
-  before_action :correct_user,   only: [:edit, :update]
-  before_action :admin_user,     only: :destroy
+  before_action :correct_user,   only: [:edit, :update, :destroy]
 
   def index
     @users = User.paginate(page: params[:page])
@@ -24,7 +23,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       sign_in @user
-      flash[:success] = "Welcome to the Sample App!"
+      flash[:success] = "Добро пожаловать!"
       redirect_to @user
     else
       render 'new'
@@ -39,7 +38,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
-      flash[:success] = "Profile updated"
+      flash[:success] = "Профиль обновлен"
       redirect_to @user
     else
       render 'edit'
@@ -49,19 +48,19 @@ class UsersController < ApplicationController
 
   def destroy
     User.find(params[:id]).destroy
-    flash[:success] = "User deleted."
-    redirect_to users_url
+    flash[:success] = "Профиль удален."
+    redirect_to root_path
   end
 
   def following
-    @title = "Following"
+    @title = "Ваши подписки"
     @user = User.find(params[:id])
     @users = @user.followed_users.paginate(page: params[:page])
     render 'show_follow'
   end
 
   def followers
-    @title = "Followers"
+    @title = "Ваши подписчики"
     @user = User.find(params[:id])
     @users = @user.followers.paginate(page: params[:page])
     render 'show_follow'

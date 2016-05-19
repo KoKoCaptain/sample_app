@@ -13,10 +13,31 @@
         <%= f.label :email %>
         <%= f.text_field :email, class: 'form-control' %>
 
-        <%= f.label :password %>
+        <%= f.label :city, 'Ваш город' %>
+        <%= f.text_field :city, class: 'form-control' %>
+
+        <%= f.label :date_of_birth, 'Ваш день рождения' %>
+        <%= f.date_select :date_of_birth, start_year: 1950, class: 'form-control' %>
+
+        <%= f.label :study_place, 'Место учебы' %>
+        <%= f.text_field :study_place, class: 'form-control' %>
+
+        <%= f.label :cafedra, 'Кафедра' %>
+        <%= f.text_field :cafedra, class: 'form-control' %>
+
+        <%= f.label :faculty, 'Факультет' %>
+        <%= f.text_field :faculty, class: 'form-control' %>
+
+        <%= f.label :group, 'Ваша группа' %>
+        <%= f.text_field :group, class: 'form-control' %>
+
+        <%= f.label :avatar, 'Выберите ваш аватар' %>
+        <%= f.file_field :avatar, class: 'form-control' %>
+
+        <%= f.label :password, 'Пароль' %>
         <%= f.password_field :password, class: 'form-control' %>
 
-        <%= f.label :password_confirmation, 'Confirmation' %>
+        <%= f.label :password_confirmation, 'Подтвердите пароль' %>
         <%= f.password_field :password_confirmation, class: 'form-control' %>
 
         <%= f.submit 'Создать аккаунт', class: 'btn btn-large btn-primary' %>

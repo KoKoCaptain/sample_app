@@ -1,8 +1,17 @@
-<li>
-  <%= gravatar_for user, size: 52 %>
-  <%= link_to user.name, user %>
-  <% if current_user.admin? && !current_user?(user) %>
-      | <%= link_to "delete", user, method: :delete,
-                    data: { confirm: "You sure?" } %>
-  <% end %>
+<li class="users-index-li">
+  <div class="users-index-image-div">
+    <%= link_to image_tag(user.avatar.url(:profile)), user_path(user) %>
+  </div>
+  <div class="users-index-info-div">
+    <ul>
+      <li><h3><%= link_to user.name, user_path(user) %></h3></li>
+      <li><p><b>Место учебы:</b> <%= user.study_place %></p></li>
+      <li><p><b>Факультет:</b> <%= user.faculty %></p></li>
+      <li><p><b>Кафедра:</b> <%= user.cafedra %></p></li>
+      <li><p><b>Группа:</b> <%= user.group %></p></li>
+      <li><p><b>День рождения:</b> <%= user.date_of_birth %></p></li>
+      <li><p><b>Город:</b> <%= user.city %></p></li>
+      <li><p><b>Должность:</b> <%= I18n.t :"activerecord.attributes.user.status.#{user.status}" %></p></li>
+    </ul>
+  </div>
 </li>

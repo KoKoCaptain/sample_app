@@ -424,15 +424,30 @@ input {
 .users {
   list-style: none;
   margin: 0;
-  li {
-    overflow: auto;
-    padding: 10px 0;
-    border-top: 1px solid $grayLighter;
-    &:last-child {
-      border-bottom: 1px solid $grayLighter;
-    }
+}
+
+.users-index-li {
+  width: 100%;
+  box-shadow: 0 0 20px 5px rgba(0,0,0,0.5);
+  margin-bottom: 15px;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  overflow: auto;
+}
+
+.users-index-image-div{
+  float: left;
+}
+
+.users-index-info-div{
+  float: left;
+  margin-left: 20px;
+  a{
+    color: #660066;
   }
-}/* microposts */
+}
+
+/* microposts */
 
 .timestamp {
   color: darkgray;

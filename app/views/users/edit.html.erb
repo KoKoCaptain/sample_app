@@ -43,5 +43,8 @@
         <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
     <% end %>
   </div>
+  <% if signed_in? && current_user == @user %>
+    <%= link_to 'Удалить профиль', "/destroy_profile/#{@user.id}", method: 'delete' %>
+  <% end %>
 </div>
 </div>

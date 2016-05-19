@@ -2,7 +2,7 @@
 <header>
     <div class="col-sm-3 nav-upper-left">
       <ul>
-        <li><%= image_tag current_user.avatar.url(:thumb) %></li>
+        <li><%= link_to image_tag(current_user.avatar.url(:thumb)), user_path(current_user) %></li>
         <li>
           <%= link_to current_user.name, user_path(current_user) %>
           <p><%= current_user.group %></p>
@@ -12,7 +12,7 @@
     <div class="nav-upper-right">
       <ul>
         <li><%= link_to image_tag('home.png', alt: 'home page'), root_path %></li>
-        <li><%= link_to image_tag('friends.png', alt: 'profile page'), user_path(current_user) %></li>
+        <li><%= link_to image_tag('friends.png', alt: 'profile page'), users_path %></li>
         <li><%= link_to image_tag('news.png', alt: 'news page'), '/news' %></li>
         <li><%= link_to image_tag('settings.png', alt: 'accout settings'),
                         "/users/#{current_user.id}/edit" %></li>
